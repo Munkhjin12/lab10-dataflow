@@ -54,4 +54,12 @@ class BonusTest {
     void rejectsNegativeThreshold() {
         assertThrows(IllegalArgumentException.class, () -> DataFlowTargets.bonus(new int[0], -1));
     }
+
+    @Test
+    @DisplayName("B8: longest streak remains below five after an absence")
+    void countsLongestStreakAfterAnAbsence() {
+        int[] attendance = {1, 1, 1, 0, 1, 1, 1, 1};
+
+        assertEquals(5, DataFlowTargets.bonus(attendance, 7));
+    }
 }
